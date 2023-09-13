@@ -19,6 +19,11 @@ def test_set_book_genre_set_new_genre(collector):
     collector.set_book_genre("Book1", "Фантастика")
     assert collector.get_book_genre("Book1") == "Фантастика", "set_book_genre установил жанр для книги"
 
+def test_set_book_genre_with_invalid_genre(collector):
+    collector.add_new_book('Book1')
+    collector.set_book_genre('Book1', 'Несуществующий_жанр')
+    assert collector.get_book_genre('Book1') == '', "set_book_genre должен оставить жанр неизменным при указании некорректного жанра"
+
 def test_get_book_genre_non_existent_book(collector):
     assert collector.get_book_genre("NonExistentBook") is None, "get_book_genre вернул НЕ None для несуществующей книги"
 
@@ -61,3 +66,4 @@ def test_get_list_of_favorites_books(collector):
 def test_add_book_in_favorites_invalid_book(collector):
     collector.add_book_in_favorites('NonExistentBook')
     assert len(collector.get_list_of_favorites_books()) == 0, "add_book_in_favorites не должен добавлять несуществующую книгу в избранное"
+

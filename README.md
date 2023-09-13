@@ -9,6 +9,9 @@ test_add_new_book_add_one_book - добавление одной новой кн
 test_set_book_genre_set_new_genre - устанавливаем книге жанр
 Проверка: вызываем get_book_genre и проверяем что жанр установлен
 
+test_set_book_genre_with_invalid_genre - устанавливаем не существующий жанр
+Проверка: вызываем get_book_genre и проверяем что жанр не установился
+
 test_get_book_genre_non_existent_book
 Проверка: вызываем get_book_genre пустой для несуществующей книги
 
