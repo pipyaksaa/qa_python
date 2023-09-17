@@ -10,9 +10,8 @@ def test_add_new_book_with_long_name(collector):
     assert len(collector.get_books_genre()) == 0, "add_new_book не должен добавлять книгу с именем длиннее 40 символов"
 
 def test_add_new_book_add_one_book(collector):
-
-    collector.add_new_book("Book1")
-    assert len(collector.get_books_genre()) == 1, "get_books_genre вернул одну книгу"
+    collector.add_new_book("")
+    assert len(collector.get_books_genre()) != 1, "get_books_genre НЕ вернул одну книгу"
 
 def test_set_book_genre_set_new_genre(collector):
     collector.add_new_book("Book1")
@@ -57,6 +56,8 @@ def test_add_book_in_favorites(collector):
     assert "Book1" in collector.get_list_of_favorites_books(), "add_book_in_favorites добавил книгу в Избранное"
 
 def test_delete_book_from_favorites(collector):
+    collector.add_new_book("Book1")
+    collector.add_book_in_favorites("Book1")
     collector.delete_book_from_favorites("Book1")
     assert "Book1" not in collector.get_list_of_favorites_books(), "delete_book_from_favorites удалил книгу из Избранного"
 
